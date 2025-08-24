@@ -28,7 +28,7 @@ def generate_resonse(query: str) -> str:
 
 #**************** Currency Exchanger Tool****************
 
-access_key = "ca0bdebd11fd15e1110ef770b1382625"
+access_key = "ca0bdebd11fd15e1110ef770b138262560"
 @tool
 def converter(query: str) -> str:
     """
@@ -117,4 +117,5 @@ agent = initialize_agent(
 )
 
     
+
 
