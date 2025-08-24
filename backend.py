@@ -36,14 +36,11 @@ def converter(query: str) -> str:
     """
     try:
         parts = query.split()
-        # if len(parts) != 2:
-        #     return "Format galat hai. Example: '10 USD'"
-
         amount = float(parts[0])
         from_currency = parts[1].upper()
         to_currency = "INR"
 
-        # Free plan: always source=USD
+        # Always source=USD
         url = f"http://api.currencylayer.com/live?access_key={access_key}&currencies={from_currency},{to_currency}&source=USD&format=1"
         response = requests.get(url)
         data = response.json()
@@ -84,17 +81,7 @@ def datetime_tool(query: str = "") -> str:
     """
     try:
         now = datetime.now()
-
-        if query.lower() == "date":
-            return now.strftime("%d %B %Y")  # e.g., 23 August 2025
-        elif query.lower() == "time":
-            return now.strftime("%H:%M:%S")  # e.g., 13:45:32
-        elif query.lower() in ["datetime", "date time"]:
-            return now.strftime("%d %B %Y, %H:%M:%S")  # e.g., 23 August 2025, 13:45:32
-        else:
-            return (
-                "Invalid query. Use 'date', 'time', or 'datetime'."
-            )
+        return now
     except Exception as e:
         return f"Error: {str(e)}"
     
@@ -130,3 +117,4 @@ agent = initialize_agent(
 )
 
     
+
